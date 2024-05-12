@@ -22,7 +22,7 @@
 \usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
 \usepackage{amsmath,amsfonts,amsthm}					% Math packages
 \usepackage[pdftex]{graphicx}									% Enable pdflatex
-\usepackage[svgnames]{xcolor}		
+\usepackage[svgnames,usenames,dvipsnames]{xcolor}
 
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc} 
@@ -60,6 +60,7 @@
     showstringspaces=false,
     showtabs=true,                  
     tabsize=2,
+    mathescape=true,
     frame=tb, 
 }
 
@@ -109,6 +110,34 @@
      \lettrine[lines=3,lhang=0.3,nindent=0em]{
      				\color{DarkGoldenrod}
      				{\textsf{#1}}}{}}
+
+
+\usepackage{tikz}
+\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[minimum width=1pt, shape=circle,fill=black,inner sep=1pt] (char) {{\footnotesize \textcolor{white}{#1}}};}}
+
+            \newcommand{\A}{\circled{a}}
+            \newcommand{\two}{\circled{b}}
+            \newcommand{\three}{\circled{c}}
+            \newcommand{\four}{\circled{d}}
+            \newcommand{\five}{\circled{e}}
+            \newcommand{\six}{\circled{f}}
+            \newcommand{\seven}{\circled{g}}
+            \newcommand{\eight}{\circled{h}}
+            \newcommand{\nine}{\circled{i}}
+            \newcommand{\ten}{\circled{j}}
+            \newcommand{\eleven}{\circled{k}}
+            \newcommand{\twelve}{\circled{l}}
+            \newcommand{\thirteen}{\circled{m}}
+            \newcommand{\fourteen}{\circled{n}}
+            \newcommand{\fifteen}{\circled{o}}
+            \newcommand{\sixteen}{\circled{p}}
+            \newcommand{\seventeen}{\circled{q}}
+            \newcommand{\eighteen}{\circled{r}}
+            \newcommand{\nineteen}{\circled{s}}
+            \newcommand{\twenty}{\circled{t}}
 
 
 
@@ -242,7 +271,7 @@ the sale  of intricate tools to clients who wished there was a
 simpler way. Well, maybe there is.
 
 
-\begin{table}{\linewidth}
+\begin{table}[!t]{\linewidth}
 \begin{lstlisting}[caption=Python example]
 import re,ast
 from typing import Any,Iterable,Callable
@@ -253,24 +282,25 @@ def coerce(s:str) -> Any:
   try: return ast.literal_eval(s) # 
   except Exception:  return s
 
-def csv(file=None) -> Iterable[Row]: 
+def csv(file=None) -> Iterable[Row]:  $\A$
   "read from file or standard input"
   with file_or_stdin(file) as src: 
     for line in src:
-      line = re.sub(r'([\n\t\r"\’ ]|#.*)', '', line) # kill comments,white space
+      line = re.sub(r'([\n\t"\’ ]|#.*)', '', line) # no comments,white space
       if line: yield [coerce(s.strip()) for s in line.split(",")]
-#---------- ---------- ---------- ---------- ---------- ---------- ----------  ----------
+#---------- ---------- ---------- ---------- ---------- ---------- ----------
 class COLS(OBJ): 
-  """Turns a list of names into NUMs and SYMs columns. All columns are held in i.all. 
-  For convenience sake, some are also help in i.x,i.y (for indepedent, dependent cols)
-  as well as i.klass (for the klass goal, if it exists)."""
+  """Turns a list of names into NUMs and SYMs columns. All columns are held 
+  in i.all.  For convenience sake, some are also help in i.x,i.y 
+  (for indepedent, dependent cols) as well as i.klass (for the klass goal, 
+  if it exists)."""
   def __init__(i, names: list[str]): 
     i.x, i.y, i.all, i.names, i.klass = [], [], [], names, None
     for at,txt in enumerate(names):
       a,z = txt[0], txt[-1] % first and last letter
       col = (NUM if a.isupper() else SYM)(at=at,txt=txt)
       i.all.append(col)
-      if z != "X": # for cols we are not ignoring, maybe make then klass,x, or y
+      if z != "X": # if not ignoring, maybe make then klass,x, or y
         (i.y if z in "!+-" else i.x).append(col)
         if z == "!": i.klass= col
 
@@ -280,6 +310,29 @@ class COLS(OBJ):
     return row
 \end{lstlisting}
 \end{table}
+
+I'm not the first to say these things\footnote{
+From Wikipedia: The manifold hypothesis posits that many
+high-dimensional data sets that occur in the real world actually
+lie along low-dimensional latent manifolds inside that high-dimensional
+space. As a consequence of the manifold hypothesis, many data sets
+that appear to initially require many variables to describe, can
+actually be described by a comparatively small number of variables,
+likened to the local coordinate system of the underlying manifold.}.
+So it is a little
+strange that someone else has not offer something like this simpler
+synthesis. But maybe our culture prefers complex solutions:
+
+\begin{quote}{\em Simplicity is a great virtue but it requires hard work to achieve
+it and education to appreciate it. And to make matters worse:
+complexity sells better.}\newline
+-- Edsger W. Dijkstra
+\end{quote}
+
+By making things harder than they need to be, companies can motivate
+the sale  of intricate tools to clients who wished there was a
+simpler way. Well, maybe there is.
+
 
 \bibliographystyle{plain}
 \bibliography{ezr.bib}
