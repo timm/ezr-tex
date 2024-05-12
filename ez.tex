@@ -117,13 +117,14 @@
 									  	\rule{\linewidth}{1pt}%
 										}
 %%begin novalidate
-\pretitle{\vspace{-30pt} \begin{flushleft} \HorRule 
+\pretitle{\vspace{-70pt} \begin{flushleft} \HorRule 
 				\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont 
 				}
-\title{Easier Analytics}					% Title of your article goes here
-\posttitle{\\
+    \usepackage[hidelinks]{hyperref}
+\title{Easier Analytics }					% Title of your article goes here
+\posttitle{\\\vspace{3mm}
 \Large Simpler, smarter, faster, more
-flexible, understandable.
+flexible and understandable
 \par\end{flushleft}\vskip 0.5em}
 
 \preauthor{\begin{flushleft}
@@ -132,15 +133,18 @@ flexible, understandable.
 \author{Tim Menzies and the EZ gang }											% Author name goes here
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} 
 					North Carolina State University	\\~\\
-       {\textcopyright} 2024 by Tim Menzies and the EZ gang is licensed under \\\textcolor{DarkRed}{Creative Commons Attribution-ShareAlike 4.0 International}
-     \ccLogo  
-\ccAttribution  
-\ccShareAlike  % Institution of author
-					\par\end{flushleft}\HorRule}
+      Package: \url{https://pypi.org/project/ezr/0.1.0/}\\
+      Source: \url{http://github.com/timm/ezr}\\
+     Latex: \url{http://github.com/timm/ezr-tex}\\
+     {\textcopyright} 2024 by Tim Menzies and the EZ gang is licensed under \textcolor{DarkRed}{Creative Commons Attribution-ShareAlike 4.0 International}
+    \LARGE ~\ccLogo  
+~\ccAttribution  
+~\ccShareAlike  \par\end{flushleft}\vspace{-4mm}\HorRule}
 %%end novalidate
 \date{}	
 \usepackage{ccicons}% No date
-
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
 
 
 %%% Begin document
