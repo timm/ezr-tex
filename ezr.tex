@@ -10,6 +10,7 @@
 							fontsize=10pt,%
 							twocolumn]{scrartcl}	 					% KOMA-article class
 
+
 \makeatletter
 \newcommand\notsotiny{\@setfontsize\notsotiny{6.5}{7.5}}
 \makeatother
@@ -41,13 +42,14 @@
  
 
 \lstdefinestyle{mystyle}{
+    xleftmargin=2em,
     language=python,
     %backgroundcolor=\color{codegray},   
     commentstyle=\color{codegray},
     keywordstyle=\bfseries\color{CustomDarkRed},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{blue},
-    basicstyle=\ttfamily\notsotiny,
+    basicstyle=\ttfamily\scriptsize,
     breakatwhitespace=false,         
     breaklines=true,                 
     captionpos=b,                    
@@ -208,20 +210,24 @@ methods since the reasoning was so complicated.
 
 
 Why can I do things so easily? Well,  based on three decades of work
-on analytics [^pigs] (which includes the work of 20 Ph.D. students,
+on analytics~\cite{menzies1988combining} (which includes the work of 20 Ph.D. students,
 hundreds of research papers and millions of dollars in research
 funding) I say:
 
 - When building models, there are incremental methods that can find
 models after very few samples.
 - This is because the main message of most models is contained in
-just a few variables [:keys].
+just a few variables~\cite{menzies1988combining}.
 
-[^keys]: Menzies, Tim, David Owen, and Julian Richardson. "The
-strangest thing about software." Computer 40.1 (2007): 54-60
-https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4069195
-
-I'm not the first to say these things [^semi]. So it is a little
+I'm not the first to say these things\footnote{
+From Wikipedia: The manifold hypothesis posits that many
+high-dimensional data sets that occur in the real world actually
+lie along low-dimensional latent manifolds inside that high-dimensional
+space. As a consequence of the manifold hypothesis, many data sets
+that appear to initially require many variables to describe, can
+actually be described by a comparatively small number of variables,
+likened to the local coordinate system of the underlying manifold.}.
+So it is a little
 strange that someone else has not offer something like this simpler
 synthesis. But maybe our culture prefers complex solutions:
 
@@ -234,26 +240,6 @@ complexity sells better.}\newline
 By making things harder than they need to be, companies can motivate
 the sale  of intricate tools to clients who wished there was a
 simpler way. Well, maybe there is.
-
-[^semi]: From Wikipedia: The manifold hypothesis posits that many
-high-dimensional data sets that occur in the real world actually
-lie along low-dimensional latent manifolds inside that high-dimensional
-space. As a consequence of the manifold hypothesis, many data sets
-that appear to initially require many variables to describe, can
-actually be described by a comparatively small number of variables,
-likened to the local coordinate system of the underlying manifold.
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. 
-
-Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
-\begin{align}
-	A = 
-	\begin{bmatrix}
-	A_{11} & A_{21} \\
-  	A_{21} & A_{22}
-	\end{bmatrix}
-\end{align}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
 
 
 \begin{table}{\linewidth}
@@ -295,43 +281,6 @@ class COLS(OBJ):
 \end{lstlisting}
 \end{table}
 
-\subsection*{Heading on level 2}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
-\begin{itemize}
-	\item First item in a list 
-	\item Second item in a list 
-	\item Third item in a list
-\end{itemize}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
-
-Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
-
-\section*{Heading on level 1 again}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
-
-\begin{table}
-\caption{Random table}
-\centering
-	\begin{tabular}{llr}
-		\toprule
-		\multicolumn{2}{c}{Name} \\
-		\cmidrule(r){1-2}
-			First name & Last Name & Grade \\
-		\midrule
-			John & Doe & $7.5$ \\
-			Richard & Miles & $2$ \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-\subsection*{Heading on level 2}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
-\begin{description}
-	\item[First] This is the first item
-	\item[Last] This is the last item
-\end{description}
-Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
-
+\bibliographystyle{plain}
+\bibliography{ezr.bib}
 \end{document}
