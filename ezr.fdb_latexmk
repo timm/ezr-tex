@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex ezr"] 1715656440.47881 "ezr.aux" "ezr.bbl" "ezr" 1715656448.31811 2
-  "./ezr.bib" 1715564485.75371 1100 c777dd19f858a1dbeb7a33b5eee6213a ""
+["bibtex ezr"] 1715657698.44588 "ezr.aux" "ezr.bbl" "ezr" 1715657698.56739 2
+  "./ezr.bib" 1715656649.32171 1392 e92fa9257eaa35d781a47257b42cfd28 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "ezr.aux" 1715656447.99049 648 fa92ba76bfa04e8fc61d6c63db3dd28d "pdflatex"
+  "ezr.aux" 1715657698.44322 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   (generated)
   "ezr.bbl"
   "ezr.blg"
   (rewritten before read)
-["pdflatex"] 1715656446.37574 "/Users/timm/gits/timm/ezr-tex/ezr.tex" "ezr.pdf" "ezr" 1715656448.31823 2
-  "/Users/timm/gits/timm/ezr-tex/ezr.tex" 1715656445.30271 13386 ab5e3dda8bc09e040247c5114011abad ""
+["pdflatex"] 1715657696.38097 "/Users/timm/gits/timm/ezr-tex/ezr.tex" "ezr.pdf" "ezr" 1715657698.35857 2
+  "/Users/timm/gits/timm/ezr-tex/ezr.tex" 1715657696.12748 13926 573846c7d8213c984bc7debb428acc80 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/sourcecodepro/a_jjp77t.enc" 1558300257 2833 b410609bdd92c9eec00c2885787a04c5 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/sourcecodepro/a_lutrty.enc" 1558300257 2905 926f570532f1104044846d18d8d97080 ""
@@ -269,10 +269,10 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1714109574 8221432 de701a023a123edfb2f9850c0e9fae4c ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "Buse.png" 1715556239.66852 307815 0d06eeb4d9c6e1d71471ce582a4df393 ""
-  "ezr.aux" 1715656447.99049 648 fa92ba76bfa04e8fc61d6c63db3dd28d "pdflatex"
-  "ezr.bbl" 1715656440.59734 0 d41d8cd98f00b204e9800998ecf8427e "bibtex ezr"
-  "ezr.out" 1715656447.5676 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "ezr.tex" 1715656445.30271 13386 ab5e3dda8bc09e040247c5114011abad ""
+  "ezr.aux" 1715657698.44322 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "ezr.bbl" 1715657698.56632 0 d41d8cd98f00b204e9800998ecf8427e "bibtex ezr"
+  "ezr.out" 0 -1 0 "pdflatex"
+  "ezr.tex" 1715657696.12748 13926 573846c7d8213c984bc7debb428acc80 ""
   (generated)
   "ezr.aux"
   "ezr.log"

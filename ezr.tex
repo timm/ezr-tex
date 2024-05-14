@@ -160,8 +160,8 @@
     \usepackage[hidelinks]{hyperref}
 \title{Easier AI }					% Title of your article goes here
 \posttitle{\\\vspace{3mm}
-\Large Simpler, smarter, faster, more
-flexible and understandable
+\Large A programmer's guide to building simpler, smarter, faster, more
+flexible and understandable analytics.
 \par\end{flushleft}\vskip 0.5em}
 
 \preauthor{\begin{flushleft}
@@ -188,6 +188,7 @@ flexible and understandable
 %%% Begin document
 \begin{document}
 \maketitle
+\section*{About}
 \thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page 
 % The first character should be within \initial{}
 \initial{A}\textbf{nalytics is the process of
@@ -211,8 +212,13 @@ a shift towards simplicity
 in analytics, making it faster, smarter, and more flexible, to
 better serve practical needs and enhance comprehensibility.}
 
+\subsection*{Audience}
+Programemrs, teachers of grad classes. XXX\newpage
 
-\section*{Introduction}
+\tableofcontents
+
+
+\clearpage \section{Introduction}
 
 Suppose we want to use data to make policies-- about what to do,
 what to avoid, what to do better, etc etc. How to do that?
@@ -221,24 +227,53 @@ This process is called {\em analytics}, i.e. the reduction of large
 amounts of low-quality data into tiny high-quality statements. Think of it like
 ``finding the diamonds in the dust``. 
 
-Potentially, there  are many parts to an AI analytics toolkit. For example,
-in their survey of business intelligence needs of Microsoft managers, 
-researchers found nine groups of analytics tasks, each of which needed
-a different kind of analysis (regression, topic analysis, anomaly detection, what-if analysis,
-etc):
+At first glance, an analytics toolkit needs many functions.   For example,
+in one survey of managers at   Microsoft, 
+researchers found nine kinds  of analytics functions~\cite{buse2012information}.
+As shown in the following table, those  functions include regression, topic analysis, anomaly detection, what-if analysis,
+etc:
 
 
 \includegraphics[width=\linewidth]{Buse.png} 
 
-Note all the different algorithms in all the boxes.  Before we knew
-better:
+Software engineers have a superpower that lets them simplify long lists of functions
+(like the above). That superpower is called {\em refactoring}, i.e. 
+restructuring the source code  so as to improve operation.
+This document applies  refactoring to analytics. It will be seen that, under
+the hood, many
+analytics tasks share a similar set of underlying classes.  This means that
+once we code one of analytics
+function, then we can quickly 
+code up many more. 
+
+For example, suppose we code a  DATA class that stores rows of data.
+This class:
 \begin{itemize}
-    \item 
- We used to study those algorithms as separate  things. Now we see
-them as very similar things, all of which call the same underling
-structure. This means that  once we code one of them, we can quickly 
-code up the rest. 
-\item We 'd explore 100,000s of possibilities to find patterns in
+    \item
+Summarizes the columns of that data  in   NUMeric and  SYMbolic
+classes
+(one for each column);
+\item Knows how to report the expected middle values of NUMs and SYMs
+    (which is the mean or mode  for NUMs or SYMs);
+\item Knows how to report the
+diversity about that middle value (which is standard deviation or entropy for
+NUMs or SYMs).
+\end{itemize}
+This DATA class offers most of the code needed to implement  clustering  and  classification:
+\begin{itemize}
+    \item
+        A k-means clusterer picks centroids and random, then labels each row according to 
+        its nearest centroid. Those centroids are then moved to the middle of all rows with the same label and
+        the process repeats. If all the rows with the same label are stored in  a DATA class, then ``moving the centroids''
+        just means asking our NUMs and SYMs for their middle values.
+\item A Naive Bayes classifier keeps separate statistics for all the rows with the same classification.
+    If each class is implemented by a DATA class, then all those statistics can be collected just by using the DATA code.
+\end{itemize} 
+Better yet, 
+once we have a clusterer and a classifier.
+
+
+ 
 the data (e.g. during a "what-if" query).  But these days, I can
 do the same analysis with 30 samples, or 
 less\footnote{Using semi-supervised multi-objective optimization via
