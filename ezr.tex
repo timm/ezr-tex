@@ -1,7 +1,7 @@
 %%% LaTeX Template: Two column article
 %%%
 %%% Source: http://www.howtotex.com/
-%%% Feel free to distribute this template, but please keep to referal to http://www.howtotex.com/ here.
+%%% Feel free to distribute this template, but please keep to   to http://www.howtotex.com/ here.
 %%% Date: February 2011
 
 %%% Preamble
@@ -10,13 +10,14 @@
 							fontsize=10pt,%
 							twocolumn]{scrartcl}	 					% KOMA-article class
 
-
+               \setlength{\columnsep}{20px}
+\bibliographystyle{plain}
 \makeatletter
 \newcommand\notsotiny{\@setfontsize\notsotiny{6.5}{7.5}}
 \makeatother
 \usepackage{lipsum}													% Package to create dummy text
 
-\usepackage[margin=.6in,footskip=0.25in]{geometry}
+\usepackage[margin=.5in,footskip=0.25in]{geometry}
 
 \usepackage[english]{babel}										% English language/hyphenation
 \usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
@@ -24,8 +25,13 @@
 \usepackage[pdftex]{graphicx}									% Enable pdflatex
 \usepackage[svgnames,usenames,dvipsnames]{xcolor}
 
+\usepackage[sc]{mathpazo}          % Palatino for roman (\rm)
+\usepackage[scaled=0.95]{helvet}   % Helvetica for sans serif (\sf)
+\usepackage{courier}               % Courier for typewriter (\tt)
+
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc} 
+
 
 \usepackage{listings} 
 
@@ -96,7 +102,7 @@
 \chead{}
 \rhead{}
 % Footer (you may change this to your own needs)
-\lfoot{\footnotesize \texttt{HowToTeX.com} \textbullet ~Two column article template}
+\lfoot{\footnotesize \texttt{Easier AI} \textbullet ~Less data, better results}
 \cfoot{}
 \rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
 \renewcommand{\headrulewidth}{0.0pt}
@@ -163,11 +169,12 @@ flexible and understandable
      
 \author{Tim Menzies and the EZR gang }											% Author name goes here
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} 
-					North Carolina State University	\\~\\
+          North Carolina State University	\\~\\\today\\
+      \url{https://doi.org/10.5281/zenodo.11183059}\\~\\
       Package: \url{https://pypi.org/project/ezr/0.1.0/}\\
       Source: \url{http://github.com/timm/ezr}\\
-     Latex: \url{http://github.com/timm/ezr-tex}\\
-     {\textcopyright} 2024 by Tim Menzies and the EZ gang is licensed under \textcolor{DarkRed}{Creative Commons Attribution-ShareAlike 4.0 International}
+      Latex: \url{http://github.com/timm/ezr-tex}\\
+     {\textcopyright} 2024 by Tim Menzies and the EZR gang is licensed under \textcolor{DarkRed}{Creative Commons Attribution-ShareAlike 4.0 International}
     \LARGE ~\ccLogo  
 ~\ccAttribution  
 ~\ccShareAlike  \par\end{flushleft}\vspace{-4mm}\HorRule}
@@ -183,11 +190,15 @@ flexible and understandable
 \maketitle
 \thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page 
 % The first character should be within \initial{}
-\initial{W}\textbf{e show
-how to simplify the process of AI analytics, which
-involves extracting high-quality  insights from large quantities
-of data. We advocate for more efficient and  accessible analytical
-methods that require fewer data samples and less  complexity. This
+\initial{A}\textbf{nalytics is the process of
+extracting high-quality  insights from large quantities
+of data. We show that a very
+simple and very fast
+AI analytics toolkit can  be built by reorganizing, combining, and simplifying
+many seemingly different parts of that toolkit. The result is
+less complexity, more efficiency, increased analytical
+power, all from
+methods requiring fewer data samples. This ``data-lite'' method
 allows for easier verification and understanding of results. We
 highlights the benefits of using incremental methods  in building
 models that can provide valuable insights with minimal data.~\\~\\ 
@@ -195,7 +206,8 @@ This  work can be viewed as a (polite) protest
 against  the prevailing preference for complex solutions
 in the industry,  suggesting that simplicity could offer more
 practical and appreciable benefits but is often overlooked due to
-commercial interests. The call is for a shift towards simplicity
+commercial interests. We call for, when possible,
+a shift towards simplicity
 in analytics, making it faster, smarter, and more flexible, to
 better serve practical needs and enhance comprehensibility.}
 
@@ -207,14 +219,14 @@ what to avoid, what to do better, etc etc. How to do that?
 
 This process is called {\em analytics}, i.e. the reduction of large
 amounts of low-quality data into tiny high-quality statements. Think of it like
-``finding the diamonds in the dust``.
+``finding the diamonds in the dust``. 
 
-Many people have been doing data-driven analytics for decades.  So
-it seems the right time  to ask how can we make  analytics  simpler,
-smarter, faster, more flexible and more understandable?
+Potentially, there  are many parts to an AI analytics toolkit. For example,
+in their survey of business intelligence needs of Microsoft managers, 
+researchers found nine groups of analytics tasks, each of which needed
+a different kind of analysis (regression, topic analysis, anomaly detection, what-if analysis,
+etc):
 
-For example,  according to Tom Zimmermann (from Microsoft Research),
-there are many things we want to do with analytics:
 
 \includegraphics[width=\linewidth]{Buse.png} 
 
@@ -292,7 +304,7 @@ def csv(file=None) -> Iterable[Row]:  $\A$
 class COLS(OBJ): 
   """Turns a list of names into NUMs and SYMs columns. All columns are held 
   in i.all.  For convenience sake, some are also help in i.x,i.y 
-  (for indepedent, dependent cols) as well as i.klass (for the klass goal, 
+  (for independent, dependent cols) as well as i.klass (for the klass goal, 
   if it exists)."""
   def __init__(i, names: list[str]): 
     i.x, i.y, i.all, i.names, i.klass = [], [], [], names, None
@@ -334,6 +346,6 @@ the sale  of intricate tools to clients who wished there was a
 simpler way. Well, maybe there is.
 
 
-\bibliographystyle{plain}
+
 \bibliography{ezr.bib}
 \end{document}
