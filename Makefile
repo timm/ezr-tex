@@ -6,7 +6,7 @@
 	@-open $@
 
 clean:
-	rm -rf *.aux *.toc *.log *.out *.bbl *.blg
+	rm -rf *.aux *.toc *.log *.out *.bbl *.blg *.fdb_latexmk
 
 saved         : ## save and push to main branch 
 	@read -p "commit msg> " x; y=$${x:-saved}; git commit -am "$$y}"; git push;  git status; echo "$$y, saved!"
