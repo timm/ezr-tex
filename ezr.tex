@@ -154,7 +154,7 @@
 									  	\rule{\linewidth}{1pt}%
 										}
 %%begin novalidate
-\pretitle{\vspace{-70pt} \begin{flushleft} \HorRule 
+\pretitle{\vspace{-80pt} \begin{flushleft} \HorRule 
 				\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont 
 				}
     \usepackage[hidelinks]{hyperref}
@@ -188,21 +188,19 @@ flexible and understandable analytics.
 %%% Begin document
 \begin{document}
 \maketitle
-\section*{About}
+\vspace{-20px}
 \thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page 
 % The first character should be within \initial{}
 \initial{A}\textbf{nalytics is the process of
 extracting high-quality  insights from large quantities
-of data. We show that a very
-simple and very fast
-AI analytics toolkit can  be built by reorganizing, combining, and simplifying
-many seemingly different parts of that toolkit. The result is
-less complexity, more efficiency, increased analytical
-power, all from
-methods requiring fewer data samples. This ``data-lite'' method
-allows for easier verification and understanding of results. We
-highlights the benefits of using incremental methods  in building
-models that can provide valuable insights with minimal data.~\\~\\ 
+of data. 
+Very simple and very fast
+analytics can  be built by implemented by , combining, and simplifying
+many seemingly different analytics functions.
+These tools are ``data-;ite''; i.e. they can reason extensively about
+complex problems using an incremental selection of just a few data samples.
+This ``data-lite'' approach.
+allows for easier verification and understanding of results. \\~\\ 
 This  work can be viewed as a (polite) protest
 against  the prevailing preference for complex solutions
 in the industry,  suggesting that simplicity could offer more
@@ -213,14 +211,20 @@ in analytics, making it faster, smarter, and more flexible, to
 better serve practical needs and enhance comprehensibility.}
 
 \subsection*{Audience}
-Programemrs, teachers of grad classes. XXX\newpage
+We write this book for programmers (or those that teach programmers).
+Here, we show
+the most we  can do with AI, using the least amount of code.
 
+In our own work, this material is used to teach a one semester graduate
+class in SE for AI.
+
+\newpage
 \tableofcontents
 
 
 \clearpage \section{Introduction}
 
-Suppose we want to use data to make policies-- about what to do,
+Suppose we want to use data to make decisions about what to do,
 what to avoid, what to do better, etc etc. How to do that?
 
 This process is called {\em analytics}, i.e. the reduction of large
@@ -235,6 +239,30 @@ etc:
 
 
 \includegraphics[width=\linewidth]{Buse.png} 
+
+But do all these seemingly different functions actually have a lot in common? Under the hood, are all these seemingly
+different things
+really just calls
+to a small number of things?  And if that was true,  does that mean:
+\begin{itemize}
+    \item
+        If we coded one thing, could rapidly code up many other analytic functions?
+    \item
+If could 
+optimize that small set of things,  could we improve a wide range of analytic functions?
+\end{itemize}
+Well,  our answers to these questions are yes, yes, yes, and yes. 
+We've been working on application of analytics for 
+decades~\cite{menzies1988combining,menzies1987micro,haynes1996visualisations,
+} and supervised
+dozens of masters and 20 Ph.D. students 
+(all publishing in the international research literature).
+
+This document is a synthesis and a reverse engineering of the core engineering
+of analytics applications,
+After 
+of work on analytics
+
 
 Software engineers have a superpower that lets them simplify long lists of functions
 (like the above). That superpower is called {\em refactoring}, i.e. 
