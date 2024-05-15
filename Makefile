@@ -3,7 +3,6 @@
 	@-bibtex ezr
 	@-pdflatex -interaction=nonstopmode $^ > /dev/null
 	@-pdflatex -interaction=nonstopmode $^ > /dev/null
-	@-open $@
 
 clean:
 	rm -rf *.aux *.toc *.log *.out *.bbl *.blg *.fdb_latexmk

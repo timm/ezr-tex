@@ -125,25 +125,25 @@
             \node[minimum width=1pt, shape=circle,fill=black,inner sep=1pt] (char) {{\footnotesize \textcolor{white}{#1}}};}}
 
             \newcommand{\A}{\circled{a}}
-            \newcommand{\two}{\circled{b}}
-            \newcommand{\three}{\circled{c}}
-            \newcommand{\four}{\circled{d}}
-            \newcommand{\five}{\circled{e}}
-            \newcommand{\six}{\circled{f}}
-            \newcommand{\seven}{\circled{g}}
-            \newcommand{\eight}{\circled{h}}
-            \newcommand{\nine}{\circled{i}}
-            \newcommand{\ten}{\circled{j}}
-            \newcommand{\eleven}{\circled{k}}
-            \newcommand{\twelve}{\circled{l}}
-            \newcommand{\thirteen}{\circled{m}}
-            \newcommand{\fourteen}{\circled{n}}
-            \newcommand{\fifteen}{\circled{o}}
-            \newcommand{\sixteen}{\circled{p}}
-            \newcommand{\seventeen}{\circled{q}}
-            \newcommand{\eighteen}{\circled{r}}
-            \newcommand{\nineteen}{\circled{s}}
-            \newcommand{\twenty}{\circled{t}}
+            \newcommand{\B}{\circled{b}}
+            \newcommand{\C}{\circled{c}}
+            \newcommand{\D}{\circled{d}}
+            \newcommand{\E}{\circled{e}}
+            \newcommand{\F}{\circled{f}}
+            \newcommand{\G}{\circled{g}}
+            \newcommand{\H}{\circled{h}}
+            \newcommand{\I}{\circled{i}}
+            \newcommand{\J}{\circled{j}}
+            \newcommand{\K}{\circled{k}}
+            \newcommand{\L}{\circled{l}}
+            \newcommand{\M}{\circled{m}}
+            \newcommand{\N}{\circled{n}}
+            \newcommand{\O}{\circled{o}}
+            \newcommand{\P}{\circled{p}}
+            \newcommand{\Q}{\circled{q}}
+            \newcommand{\R}{\circled{r}}
+            \newcommand{\S}{\circled{s}}
+            \newcommand{\T}{\circled{t}}
 
 
 
@@ -160,14 +160,14 @@
     \usepackage[hidelinks]{hyperref}
 \title{Easier AI }					% Title of your article goes here
 \posttitle{\\\vspace{3mm}
-\Large A programmer's guide to building simpler, smarter, faster, more
+\Large How to  program simpler, smarter, faster, more
 flexible and understandable analytics.
 \par\end{flushleft}\vskip 0.5em}
 
 \preauthor{\begin{flushleft}
 					\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkRed}}
      
-\author{Tim Menzies and the EZR gang }											% Author name goes here
+\author{Tim Menzies and the EZR mob }											% Author name goes here
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} 
           North Carolina State University	\\~\\\today\\
       \url{https://doi.org/10.5281/zenodo.11183059}\\~\\
@@ -184,6 +184,11 @@ flexible and understandable analytics.
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
 
+\newcommand{\VERSION}{3.11}
+
+\newenvironment{code}[1]
+    {\begin{table}[!t] \begin{lstlisting}[caption=#1]}{%
+     \end{lstlisting} \end{table}}
 
 %%% Begin document
 \begin{document}
@@ -191,24 +196,22 @@ flexible and understandable analytics.
 \vspace{-20px}
 \thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page 
 % The first character should be within \initial{}
-\initial{A}\textbf{nalytics is the process of
+\initial{T}\textbf{his book
+is about
 extracting high-quality  insights from large quantities
 of data. 
-Very simple and very fast
-analytics can  be built by implemented by , combining, and simplifying
-many seemingly different analytics functions.
-These tools are ``data-;ite''; i.e. they can reason extensively about
+It will be shown that very simple and very fast    
+AI tools can  be built by combining
+many seemingly different functions.
+This approach is  ``data-lite''; i.e. it  can reason about
 complex problems using an incremental selection of just a few data samples.
-This ``data-lite'' approach.
-allows for easier verification and understanding of results. \\~\\ 
+This 
+allows for faster inference as well as
+easier verification and understanding of results. \\~\\ 
 This  work can be viewed as a (polite) protest
 against  the prevailing preference for complex solutions
-in the industry,  suggesting that simplicity could offer more
-practical and appreciable benefits but is often overlooked due to
-commercial interests. We call for, when possible,
-a shift towards simplicity
-in analytics, making it faster, smarter, and more flexible, to
-better serve practical needs and enhance comprehensibility.}
+When simpler works, we should use it.
+Who can argue against that?}
 
 \subsection*{Audience}
 We write this book for programmers (or those that teach programmers).
@@ -219,7 +222,39 @@ In our own work, this material is used to teach a one semester graduate
 class in SE for AI.
 
 \newpage
+\subsection*{About the Authors}
+This book was written by the EZR mob (students from North Carolina State University, USA)
+in a two-month hackathon June,July 2024. 
+
+That work was coordinated  by 
+Tim Menzies, a professor of Computer Science at NC State University (USA).
+He is a 
+IEEE Fellow; and the Editor-in-Chief of the
+Automated Software Engineering journal.
+With over 13 million in grant money and industrial contracts,
+Prof. Menzies  has graduated 50 research students-by-thesis (including 20
+Ph.D.s).  Prof. Menzies and his students have explored
+applications of analytics for
+spacecraft control, fairness, explanation, configuration, cloud computing,  security, literature reviews,
+technical  debt,  vulnerability prediction, defect prediction, effort estimation,  and the management
+of open source software projects.
+Google Scholar ranks this him as \#2 for AI for SE and
+software cost estimation, \#1 for defect prediction, and \#3 for software
+analytics.  
+
+\subsection*{Get the code}
+Our code is written in Python {\VERSION}.
+\begin{itemize}
+    \item
+        Install the code using \verb+pip install ezr+. 
+    \item
+        Test that installation using \verb+ezr -h+.
+\end{itemize}
+
+
+\clearpage
 \tableofcontents
+\clearpage
 
 
 \clearpage \section{Introduction}
@@ -240,114 +275,254 @@ etc:
 
 \includegraphics[width=\linewidth]{Buse.png} 
 
-But do all these seemingly different functions actually have a lot in common? Under the hood, are all these seemingly
+But do all these seemingly different functions actually have a lot in common? 
+Under the hood, are these seemingly
 different things
 really just calls
 to a small number of things?  And if that was true,  does that mean:
 \begin{itemize}
     \item
-        If we coded one thing, could rapidly code up many other analytic functions?
+        After coding one thing, can we rapidly code may other  analytic functions?
     \item
 If could 
 optimize that small set of things,  could we improve a wide range of analytic functions?
 \end{itemize}
-Well,  our answers to these questions are yes, yes, yes, and yes. 
-We've been working on application of analytics for 
-decades~\cite{menzies1988combining,menzies1987micro,haynes1996visualisations,
-} and supervised
-dozens of masters and 20 Ph.D. students 
-(all publishing in the international research literature).
+Well,  our answers to these questions are yes, yes, yes, and yes.
+We've been working on applications of analytics for decades
+exploring data-driven applications in 
+spacecraft control, fairness, explanation, configuration, cloud computing,  security, literature reviews,
+technical  debt,  vulnerability prediction, defect prediction, effort estimation,  and the management
+of open source software projects.
+Based on that experience, we
+we know the key to simpler analytics:
 
-This document is a synthesis and a reverse engineering of the core engineering
-of analytics applications,
-After 
-of work on analytics
-
-
-Software engineers have a superpower that lets them simplify long lists of functions
-(like the above). That superpower is called {\em refactoring}, i.e. 
-restructuring the source code  so as to improve operation.
-This document applies  refactoring to analytics. It will be seen that, under
-the hood, many
-analytics tasks share a similar set of underlying classes.  This means that
-once we code one analytics
-function, then we can quickly 
-code up many more. 
-
-For example, suppose we code a  DATA class that stores rows of data.
-This class:
 \begin{itemize}
-    \item
-Summarizes the columns of that data  in   NUMeric and  SYMbolic
-classes
-(one for each column);
-\item Knows how to report the expected middle values of NUMs and SYMs
-    (which is the mean or mode  for NUMs or SYMs);
-\item Knows how to report the
-diversity about that middle value (which is standard deviation or entropy for
-NUMs or SYMs).
+\item There are incremental methods that can find models after very few samples.
+\item Why? Well, the signal of most models comes from just a few variables~\cite{MenziesOR07}.
 \end{itemize}
-This DATA class offers most of the code needed to implement  clustering  and  classification:
+To say that another way, many data sets compress (a  lot)
+without loss of signal.
+In that compressed space:
 \begin{itemize}
     \item
-        A k-means clusterer picks centroids and random, then labels each row according to 
-        its nearest centroid. Those centroids are then moved to the middle of all rows with the same label and
-        the process repeats. If all the rows with the same label are stored in  a DATA class, then ``moving the centroids''
-        just means asking our NUMs and SYMs for their middle values.
-\item A Naive Bayes classifier keeps separate statistics for all the rows with the same classification.
-    If each class is implemented by a DATA class, then all those statistics can be collected just by using the DATA code.
-\end{itemize} 
-Better yet, 
-once we have a clusterer and a classifier.
-
-
- 
-the data (e.g. during a "what-if" query).  But these days, I can
-do the same analysis with 30 samples, or 
-less\footnote{Using semi-supervised multi-objective optimization via
-sequential model optimization (which is all described, later in
-this document).} 
-This means
-if someone wants to check my conclusions, they only need to review
-a few dozen samples.  Such a review was impossible using prior
-methods since the reasoning was so complicated.
-
-
-Why can I do things so easily? Well,  based on three decades of work
-on analytics~\cite{menzies1988combining} (which includes the work of 20 Ph.D. students,
-hundreds of research papers and millions of dollars in research
-funding) I say:
-
-- When building models, there are incremental methods that can find
-models after very few samples.
-- This is because the main message of most models is contained in
-just a few variables~\cite{menzies1988combining}.
-
-I'm not the first to say these things\footnote{
-From Wikipedia: The manifold hypothesis posits that many
-high-dimensional data sets that occur in the real world actually
-lie along low-dimensional latent manifolds inside that high-dimensional
-space. As a consequence of the manifold hypothesis, many data sets
+        All our functions algorithms run faster (since there is less to explore);
+    \item
+        Modeling becomes more manageable;
+e.g. when optimizing, our data needs very few labels.
+\item
+Most data becomes private
+since we threw away so much in the compression process.
+\item
+Explanation is easier since this there is less to explain. 
+This means,also, that auditing the work of others is also easier since there is less to check.
+\end{itemize}
+We are not the first to say these things.
+For example, many researcher accept that higher dimensional data can often be reduced
+to a
+{\textbf lower dimensional latent manifolds} inside that high-dimensional
+space~\cite{zhu2005semi}.
+As a consequence of the manifold hypothesis, many data sets
 that appear to initially require many variables to describe, can
-actually be described by a comparatively small number of variables,
-likened to the local coordinate system of the underlying manifold.}.
-So it is a little
-strange that someone else has not offer something like this simpler
-synthesis. But maybe our culture prefers complex solutions:
-
-\begin{quote}{\em Simplicity is a great virtue but it requires hard work to achieve
+actually be described by a {\textbf comparatively small number of variables}.
+That said, this book has two novel features:
+\begin{itemize}
+    \item The simplicity of our implementation: less than 200 lines of Python for our core system;
+    \item How much we reduce the data: often we will end up reasoning over just a few dozen key examples.
+\end{itemize}
+Why has not someone else published a  book showing that many seemingly complex
+analytics tasks can be reduced to very simple code (that only needs a little bit of data)?
+Maybe our culture prefers complex solutions:
+\begin{quote}
+    {\em 
+Simplicity is a great virtue but it requires hard work to achieve
 it and education to appreciate it. And to make matters worse:
-complexity sells better.}\newline
--- Edsger W. Dijkstra
+    complexity sells better}\newline -- Edsger W. Dijkstra
 \end{quote}
-
 By making things harder than they need to be, companies can motivate
 the sale  of intricate tools to clients who wished there was a
-simpler way. Well, maybe there is.
+simpler way. 
+
+Well, maybe there is a simpler way.
+\newpage
+% Software engineers have a superpower that lets them simplify long lists of functions
+% (like the above). That superpower is called {\em refactoring}, i.e. 
+% restructuring the source code  so as to improve operation.
+% This document applies  refactoring to analytics. It will be seen that, under
+% the hood, many
+% analytics tasks share a similar set of underlying classes.  This means that
+% once we code one analytics
+% function, then we can quickly 
+% code up many more. 
+
+% For example, suppose we code a  DATA class that stores rows of data.
+% This class:
+% \begin{itemize}
+%     \item
+% Summarizes the columns of that data  in   NUMeric and  SYMbolic
+% classes
+% (one for each column);
+% \item Knows how to report the expected middle values of NUMs and SYMs
+%     (which is the mean or mode  for NUMs or SYMs);
+% \item Knows how to report the
+% diversity about that middle value (which is standard deviation or entropy for
+% NUMs or SYMs).
+% \end{itemize}
+% This DATA class offers most of the code needed to implement  clustering  and  classification:
+% \begin{itemize}
+%     \item
+%         A k-means clusterer picks centroids and random, then labels each row according to 
+%         its nearest centroid. Those centroids are then moved to the middle of all rows with the same label and
+%         the process repeats. If all the rows with the same label are stored in  a DATA class, then ``moving the centroids''
+%         just means asking our NUMs and SYMs for their middle values.
+% \item A Naive Bayes classifier keeps separate statistics for all the rows with the same classification.
+%     If each class is implemented by a DATA class, then all those statistics can be collected just by using the DATA code.
+% \end{itemize} 
+% Better yet, 
+% once we have a clusterer and a classifier.
+%
+%
+%  
+% the data (e.g. during a "what-if" query).  But these days, I can
+% do the same analysis with 30 samples, or 
+% less\footnote{Using semi-supervised multi-objective optimization via
+% sequential model optimization (which is all described, later in
+% this document).} 
+% This means
+% if someone wants to check my conclusions, they only need to review
+% a few dozen samples.  Such a review was impossible using prior
+% methods since the reasoning was so complicated.
+%
+%
+% Why can I do things so easily? Well,  based on three decades of work
+% on analytics~\cite{menzies1988combining} (which includes the work of 20 Ph.D. students,
+% hundreds of research papers and millions of dollars in research
+% funding) I say:
+%
+% - When building models, there are incremental methods that can find
+% models after very few samples.
+% - This is because the main message of most models is contained in
+% just a few variables~\cite{menzies1988combining}.
+%
+% I'm not the first to say these things\footnote{
+% From Wikipedia: The manifold hypothesis posits that many
+% high-dimensional data sets that occur in the real world actually
+% lie along low-dimensional latent manifolds inside that high-dimensional
+% space. As a consequence of the manifold hypothesis, many data sets
+% that appear to initially require many variables to describe, can
+% actually be described by a comparatively small number of variables,
+% likened to the local coordinate system of the underlying manifold.}.
+% So it is a little
+% strange that someone else has not offer something like this simpler
+% synthesis. But maybe our culture prefers complex solutions:
+%
+% \begin{quote}{\em Simplicity is a great virtue but it requires hard work to achieve
+% it and education to appreciate it. And to make matters worse:
+% complexity sells better.}\newline
+% -- Edger W. Dijkstra
+% \end{quote}
+%
+% By making things harder than they need to be, companies can motivate
+% the sale  of intricate tools to clients who wished there was a
+% simpler way. Well, maybe there is.
+%
+\section{Before we Begin}
+Before anything else, we need to cover some preliminaries.
+\subsection{Just a Little Maths}
+\subsubsection{Numbers and Symbols}
+\subsubsection{What's in the middle? What is spread around the middle?}
+
+\subsubsection{Pseudo-Random Numbers}
+
+\subsection{Just a Little Stats}
+\subsection{Statistically Distinguishable}
+\subsection{Global Settings}
+The following code needs certain magic settings. This are defined in our help text and extracted
+via some very simple parsing:
+\begin{itemize}
+    \item The control parameters are the word that follows ``--''.
+    \item That parameter's default value is the last work on the line with ``--''.
+    \item That default can be changed on the command line. E.g. our
+        random number ``seed'' can be set from the Mac or UNIX operating system  
+        using  \verb+ezr -s $RANDOM+
+\end{itemize}
+\subsection{Types}
+For ease of documentation, this code uses type hints.  Most of our types are standard in Python {\VERSION}
+but we had to import and define some specials:
 
 
-\begin{table}[!t]{\linewidth}
-\begin{lstlisting}[caption=Python example]
+
+\section{Core Classes}
+How can we  combining many things into a much smaller number of things? One way is to look for
+the glue, undere-the-hood, that is shared across all those things.
+
+For analytics, that glue is the data processed by the different alorithms. So the core
+of this system is 
+four classes: 
+\verb+DATA+, 
+\verb+NUM+, 
+\verb+SYM+, 
+and \verb+COLS+. There are several other classes but these four are always center-stage.
+
+\verb+DATA+ is where we store rows of data. Each column of that data is summarized
+in a \verb+NUM+eric or \verb+SYM+bolic header. And \verb+COLS+ is a helper clas
+that turns a list of column names into the various \verb+NUM+s and \verb+SYM+s.
+
+\verb+DATA+ can be loaded in from file of comma-separate values. In these files,
+the first row contains the column header names. For example:
+
+{\notsotiny
+\begin{verbatim}
+Clndrs  Volume  Model   origin  Lbs-   Acc+  Mpg+
+------  -----   ------  ------  -----  ---   ----
+4       97      82      2       2130   24.6  40
+4       96      72      2       2189   18    30
+4       140     74      1       2542   17    30
+...     ...     ....    ....    .....  .... ....
+4       119     78      3       2300   14.7  30
+8       260     79      1       3420   22.2  20
+4       134     78      3       2515   14.8  20
+6       231     78      1       3380   15.8  20
+8       302     77      1       4295   14.9  20
+8       351     71      1       4154   13.5  10
+\end{verbatim}}
+Just to explain the column names:
+
+\begin{itemize}
+    \item Names starting with ``Uppercase'' are \verb+NUM+eric and the other columns
+        are \verb+SYM+bolic.  
+    \item Names ending with ``-'',``+'' or ``!'' are the {\em goals}
+which must  be minimized, maximized or predicted. The other columns
+are the observables or controllables used to reach the goals.
+\end{itemize}
+The rows are all examples of some function $Y=F(X)$ where:
+
+\begin{itemize}
+    \item $Y$ are the goals (also called the dependents)
+    \item $X$ are the observables or controllables (also called the independents)
+    \item $F$ is the model we want to generate.
+\end{itemize}
+For example,  the above table is about motor cars:
+\begin{itemize}
+    \item
+ Lighter cars cost less to build since they use less metal.
+  Hence "Lbs-" (minimize weight).
+\item Faster, fuel efficient cars  are easier to sell. Hence ``Acc+'' (maximize
+   acceleration) and ``Mpg+'' (maximize miles per gallon).
+\end{itemize}
+The rows of this table are sorted by  {\em distance to heaven} i.e the
+distance of each row to
+some mythical best car with least weight, most acceleration and
+miles per hour.  Those rows are then divided into a \verb+smallN+ best rows
+(the first three rows) and rest (the other rows).
+
+\begin{itemize}
+    \item
+ \verb+smallN+ is our shorthand for   $\sqrt{N}$.
+\item We have another term,  \verb+tinyN+, which  denotes a dozen  ($N=12$) examples.  
+\end{itemize}
+
+
+\begin{code}[Python example]
 import re,ast
 from typing import Any,Iterable,Callable
 from fileinput import FileInput as file_or_stdin
@@ -383,8 +558,7 @@ class COLS(OBJ):
     "summarize a row into the NUMs and SYMs"
     [col.add(row[col.at]) for col in i.all if row[col.at] != "?"]
     return row
-\end{lstlisting}
-\end{table}
+\end{code}
 
 I'm not the first to say these things\footnote{
 From Wikipedia: The manifold hypothesis posits that many
@@ -409,6 +583,7 @@ the sale  of intricate tools to clients who wished there was a
 simpler way. Well, maybe there is.
 
 
-
+\clearpage
+\addcontentsline{toc}{section}{References}
 \bibliography{ezr.bib}
 \end{document}
