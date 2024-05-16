@@ -61,7 +61,6 @@
     captionpos=b,                    
     keepspaces=true,                 
     numbers=left,                    
-    numbersep=5pt,                  
     showspaces=false,                
     showstringspaces=false,
     showtabs=true,                  
@@ -102,7 +101,7 @@
 \chead{}
 \rhead{}
 % Footer (you may change this to your own needs)
-\lfoot{\footnotesize \texttt{Easier AI} \textbullet ~a programmer's guide}
+\lfoot{\footnotesize \texttt{Easier AI} \textbullet ~Programmer's guide}
 \cfoot{}
 \rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
 \renewcommand{\headrulewidth}{0.0pt}
@@ -124,26 +123,26 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[minimum width=1pt, shape=circle,fill=black,inner sep=1pt] (char) {{\footnotesize \textcolor{white}{#1}}};}}
 
-            \newcommand{\A}{\circled{a}}
-            \newcommand{\B}{\circled{b}}
-            \newcommand{\C}{\circled{c}}
-            \newcommand{\D}{\circled{d}}
-            \newcommand{\E}{\circled{e}}
-            \newcommand{\F}{\circled{f}}
-            \newcommand{\G}{\circled{g}}
-            \newcommand{\H}{\circled{h}}
-            \newcommand{\I}{\circled{i}}
-            \newcommand{\J}{\circled{j}}
-            \newcommand{\K}{\circled{k}}
-            \newcommand{\L}{\circled{l}}
-            \newcommand{\M}{\circled{m}}
-            \newcommand{\N}{\circled{n}}
-            \newcommand{\O}{\circled{o}}
-            \newcommand{\P}{\circled{p}}
-            \newcommand{\Q}{\circled{q}}
-            \newcommand{\R}{\circled{r}}
-            \newcommand{\S}{\circled{s}}
-            \newcommand{\T}{\circled{t}}
+            \newcommand{\cA}{\circled{a}}
+            \newcommand{\cB}{\circled{b}}
+            \newcommand{\cC}{\circled{c}}
+            \newcommand{\cD}{\circled{d}}
+            \newcommand{\cE}{\circled{e}}
+            \newcommand{\cF}{\circled{f}}
+            \newcommand{\cG}{\circled{g}}
+            \newcommand{\cH}{\circled{h}}
+            \newcommand{\cI}{\circled{i}}
+            \newcommand{\cJ}{\circled{j}}
+            \newcommand{\cK}{\circled{k}}
+            \newcommand{\cL}{\circled{l}}
+            \newcommand{\cM}{\circled{m}}
+            \newcommand{\cN}{\circled{n}}
+            \newcommand{\cO}{\circled{o}}
+            \newcommand{\cP}{\circled{p}}
+            \newcommand{\cQ}{\circled{q}}
+            \newcommand{\cR}{\circled{r}}
+            \newcommand{\cS}{\circled{s}}
+            \newcommand{\cT}{\circled{t}}
 
 
 
@@ -185,10 +184,6 @@ flexible and understandable analytics.
 \setlist[itemize]{noitemsep}
 
 \newcommand{\VERSION}{3.11}
-
-\newenvironment{code}[1]
-    {\begin{table}[!t] \begin{lstlisting}[caption=#1]}{%
-     \end{lstlisting} \end{table}}
 
 %%% Begin document
 \begin{document}
@@ -343,6 +338,14 @@ the sale  of intricate tools to clients who wished there was a
 simpler way. 
 
 Well, maybe there is a simpler way.
+
+\subsection*{All we need is Les}
+\textcolor{red}{
+This code takes a  ``less is more'' approach to programming. According to  Dieter. sterwardsheip. less enrgy. 
+Code to be read at a glance (so not pep4.8a Dieter Rams'  
+~\\
+reply: less is a bore. so if we do less we need to d more with less. more functionality. faster code. noverl results not achieved with prior approached
+}
 \newpage
 % Software engineers have a superpower that lets them simplify long lists of functions
 % (like the above). That superpower is called {\em refactoring}, i.e. 
@@ -427,6 +430,69 @@ Well, maybe there is a simpler way.
 %
 \section{Before we Begin}
 Before anything else, we need to cover some preliminaries.
+\subsection{A Few Imports}
+Table~\ref{tbl:create} imports the Python modules used by this code.
+
+\begin{table}[!h]
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[caption={Row creation. And column header creation (from row1)},label={tbl:create}]
+from __future__ import annotations   # <1> ## types  
+import sys
+sys.dont_write_bytecode = True
+from collections import Counter
+import re,ast,copy,json,math,random
+from typing import Any,Iterable,Callable
+from fileinput import FileInput as file_or_stdin 
+\end{lstlisting}
+\end{minipage}
+\end{table}
+
+\subsection{``{\texttt the}'' stores the Config }
+All code has magic settings and this code is no exception.
+Our config options are help in the {\texttt the} variable and is referenced
+via (e.g.) {\texttt the.seed}.
+
+\begin{table}[!h]
+    \notsotiny
+    \begin{verbatim}
+ez.py: Active learning, find best/rest seen so far in a Bayes classifier   
+(c) 2024 Tim Menzies <timm@ieee.org>, BSD-2 license   
+
+OPTIONS:  
+  -s --seed     random number seed    = 1234567891    
+  -g --go       start up action       = help
+  -f --file     data file             = ../data/auto93.csv    
+  -n --ntiny    a tiny number         = 12   
+  -N --Nsmall   a small number        = .5
+    
+  Discretize:
+  -C --Cuts     max number divisions of numerics = 16
+
+  Classify:     
+  -k --k        low frequency kludge  = 1 
+  -m --m        low frequency kludge  = 2   
+    
+  Optimize:    
+  -i --init     initial eval budget   = 4
+  -B --Budget   max eval budget       = 20
+  -T --Top      keep top todos        = .8 
+  
+  Explain: 
+  -l --leaf     min leaf size         = 2
+    \end{verbatim}
+\caption{Help text: defines the global options.}\label{tbl:help}
+\end{table}
+
+This {\texttt the} is generated by parsing the help string of Table~\ref{tbl:help}:
+\begin{itemize}
+    \item The control parameters are the word that follows ``--''.
+    \item That parameter's default value is the last work on the line with ``--''.
+    \item That default can be changed on the command line. E.g. our
+        random number ``seed'' can be set from the Mac or UNIX operating system  
+        using  \verb+ezr -s $RANDOM+
+\end{itemize}
+
+
 \subsection{Just a Little Maths}
 \subsubsection{Numbers and Symbols}
 \subsubsection{What's in the middle? What is spread around the middle?}
@@ -435,16 +501,6 @@ Before anything else, we need to cover some preliminaries.
 
 \subsection{Just a Little Stats}
 \subsection{Statistically Distinguishable}
-\subsection{Global Settings}
-The following code needs certain magic settings. This are defined in our help text and extracted
-via some very simple parsing:
-\begin{itemize}
-    \item The control parameters are the word that follows ``--''.
-    \item That parameter's default value is the last work on the line with ``--''.
-    \item That default can be changed on the command line. E.g. our
-        random number ``seed'' can be set from the Mac or UNIX operating system  
-        using  \verb+ezr -s $RANDOM+
-\end{itemize}
 \subsection{Types}
 For ease of documentation, this code uses type hints.  Most of our types are standard in Python {\VERSION}
 but we had to import and define some specials:
@@ -522,7 +578,9 @@ miles per hour.  Those rows are then divided into a \verb+smallN+ best rows
 \end{itemize}
 
 
-\begin{code}[Python example]
+
+\begin{table}[!t]
+    \begin{lstlisting}
 import re,ast
 from typing import Any,Iterable,Callable
 from fileinput import FileInput as file_or_stdin
@@ -532,11 +590,11 @@ def coerce(s:str) -> Any:
   try: return ast.literal_eval(s) # 
   except Exception:  return s
 
-def csv(file=None) -> Iterable[Row]:  $\A$
+def csv(file=None) -> Iterable[Row]:  $\cA$
   "read from file or standard input"
   with file_or_stdin(file) as src: 
     for line in src:
-      line = re.sub(r'([\n\t"\’ ]|#.*)', '', line) # no comments,white space
+      line = re.sub(r'([\n\t\r ]|#.*)', '', line)
       if line: yield [coerce(s.strip()) for s in line.split(",")]
 #---------- ---------- ---------- ---------- ---------- ---------- ----------
 class COLS(OBJ): 
@@ -558,7 +616,9 @@ class COLS(OBJ):
     "summarize a row into the NUMs and SYMs"
     [col.add(row[col.at]) for col in i.all if row[col.at] != "?"]
     return row
-\end{code}
+\end{lstlisting}
+    \caption{Creating rows and column headers (from row1).}\label{read}
+\end{table}
 
 I'm not the first to say these things\footnote{
 From Wikipedia: The manifold hypothesis posits that many

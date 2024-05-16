@@ -1,3 +1,19 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{buse2012information}
+Raymond~PL Buse and Thomas Zimmermann.
+\newblock Information needs for software development analytics.
+\newblock In {\em 2012 34th International Conference on Software Engineering
+  (ICSE)}, pages 987--996. IEEE, 2012.
+
+\bibitem{MenziesOR07}
+Tim Menzies, David Owen, and Julian Richardson.
+\newblock The strangest thing about software.
+\newblock {\em Computer}, 40(1):54--60, 2007.
+
+\bibitem{zhu2005semi}
+Xiaojin~Jerry Zhu.
+\newblock Semi-supervised learning literature survey.
+\newblock 2005.
 
 \end{thebibliography}
