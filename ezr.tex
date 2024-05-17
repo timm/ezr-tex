@@ -453,19 +453,22 @@ For examples, as shown in Table~\ref{tbl:types}:
 \item \verb+Classes+ are dictionaries whose keys are class names and whose
     values are \verb+Rows+. {\cE}
 \end{itemize}
-ALso, {\texttt OBJ} is a handy-dandy super class for everything we do.
-This class is an easy way to  generate an  {\texttt OBJ}ect with very little ; e.g.
+Also, {\texttt OBJ} {\cF} is a handy-dandy super class for everything we do.
+This class is an easy way to  generate an  {\texttt OBJ}ect with very little effort; e.g.
 
 {\notsotiny \begin{verbatim}
 person = OBJ(age=10, job="programmer")
 \end{verbatim}}
 
+\noindent
 That new {\texttt OBJ}ject gives us access to all its slots for reading and update:
 
 {\notsotiny \begin{verbatim}
 person.age += 1
 peron.job = "retired"
 print(person)
+
+==> OBJ{:age 11, :job retired}
 \end{verbatim}}
 
 
@@ -495,10 +498,19 @@ class Row    : has:list[Any] $\cC$
 class Rows   : has:list[Row] $\cD$
 class Classes: has:dict[str, Rows] $\cE$
 
-class OBJ:
+class OBJ: $\cF$
   def __init__(i,**d)    : i.__dict__.update(d)
   def __repr__(i) -> str : return i.__class__.__name__+show(i.__dict__)
 
+def show(x:Any, n=3) -> Any:
+  """Truncate long lists, round floats, recurs into dictionary values,
+  do print 'secret' slots (those starting with '_')."""
+  if   isinstance(x,(int,float)) : x= x if int(x)==x else round(x,n)
+  elif isinstance(x,(list,tuple)): x= [show(y,n) for y in x][:10]
+  elif isinstance(x,dict): 
+    x= "{"+', '.join(f":{k} {show(v,n)}" for k,v in sorted(x.items()) 
+                                         if k[0]!="_")+"}"
+  return x
 \end{lstlisting}
 \end{minipage}
 \end{table}
